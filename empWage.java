@@ -38,7 +38,6 @@ class empMethods{
 			System.out.println("Total Wage of "+count+" Day : "+Total_Wage);
 			count=count+1;
 		}
-		System.out.println("------------------------------------------------------");
 		System.out.println("------------------------Total-------------------------");
 		System.out.println("Total Month Wage : "+Total_Month_Wage);
 		System.out.println("Total Month Work Hours : "+hours);
