@@ -1,5 +1,5 @@
 import java.util.Random;
-class empMethods{
+class EmpMethods{
 	int Wage_per_hour=20;
 	int Day_hour=8;
 	int Part_time=4;
@@ -24,10 +24,10 @@ class empMethods{
 		}
 	}
 }
-public class empWage{
+public class EmpWage{
 	public static void main(String args[]){
 		System.out.println("Welcome to Wage Computation Program");
-		empMethods e1=new empMethods();
+		EmpMethods e1=new EmpMethods();
 		e1.check();
 		//System.out.println(choice + " Hello world");
 	}
