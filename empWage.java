@@ -1,5 +1,5 @@
 import java.util.Random;
-public class empWage{
+public class EmpWage{
 	public static void main(String args[]){
 		System.out.println("Welcome to Wage Computation Program");
 		Random rand = new Random();
