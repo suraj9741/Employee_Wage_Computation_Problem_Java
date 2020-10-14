@@ -24,30 +24,21 @@ class EmpMethods{
 			int choice = rand.nextInt(10) % 3;
 			switch (choice){
 				case 0:
-//					System.out.println("------------------------------------------------------");
-//					System.out.println("Present Full time employee");
 					Day_hour=8;
 					break;
 				case 1:
-//					System.out.println("------------------------------------------------------");
-//					System.out.println("Present Part time employee");
 					Day_hour=4;
 					break;
 				case 2:
-//					System.out.println("------------------------------------------------------");
-//					System.out.println("Absent");
 					Day_hour=0;
 					break;
 				default:
-//					System.out.println("------------------------------------------------------");
-//					System.out.println("Invalid");
 					Day_hour=0;
 					break;
 			}
 			hours=hours+Day_hour;
 			Total_Wage=Emp_Rate_Per_Hour*Day_hour;
 			Total_Month_Wage=Total_Month_Wage+Total_Wage;
-//			System.out.println("Total Wage of "+Total_Woking_Days+" Day : "+Total_Wage);
 			Total_Woking_Days=Total_Woking_Days+1;
 		}
 		System.out.println("------------------------Total-------------------------");
