@@ -55,32 +55,32 @@ public class EmpWage{
 		}
 		private int computeEmpWage(EmpMethods companyEmpWage){
 			while(companyEmpWage.Total_Woking_Days<=companyEmpWage.Num_Of_Working_Days&&companyEmpWage.hours<companyEmpWage.Max_Hours_Per_Month){
-			int choice = rand.nextInt(10) % 3;
-			switch (choice){
-				case 0:
-					companyEmpWage.Day_hour=8;
-					break;
-				case 1:
-					companyEmpWage.Day_hour=4;
-					break;
-				case 2:
-					companyEmpWage.Day_hour=0;
-					break;
-				default:
-					companyEmpWage.Day_hour=0;
-					break;
-			}
-			companyEmpWage.hours=companyEmpWage.hours+companyEmpWage.Day_hour;
-			companyEmpWage.Total_Wage=companyEmpWage.Emp_Rate_Per_Hour*companyEmpWage.Day_hour;
-			companyEmpWage.Total_Month_Wage=companyEmpWage.Total_Month_Wage+companyEmpWage.Total_Wage;
-			companyEmpWage.Total_Woking_Days=companyEmpWage.Total_Woking_Days+1;
-		}
-		System.out.println("------------------------Total-------------------------");
-		System.out.println("Total Month Wage in "+ companyEmpWage.Company +" is : "+companyEmpWage.Total_Month_Wage);
-		System.out.println("Total Month Work Hours in "+ companyEmpWage.Company +" is : "+companyEmpWage.hours+" Out of "+companyEmpWage.Max_Hours_Per_Month);
-		System.out.println("Total Month Working Days in "+ companyEmpWage.Company +" is : "+(companyEmpWage.Total_Woking_Days-1)+" Out of "+companyEmpWage.Num_Of_Working_Days);
-		System.out.println("------------------------------------------------------");
-		return companyEmpWage.Total_Month_Wage;		
+					int choice = rand.nextInt(10) % 3;
+					switch (choice){
+						case 0:
+							companyEmpWage.Day_hour=8;
+							break;
+						case 1:
+							companyEmpWage.Day_hour=4;
+							break;
+						case 2:
+							companyEmpWage.Day_hour=0;
+							break;
+						default:
+							companyEmpWage.Day_hour=0;
+							break;
+					}
+					companyEmpWage.hours=companyEmpWage.hours+companyEmpWage.Day_hour;
+					companyEmpWage.Total_Wage=companyEmpWage.Emp_Rate_Per_Hour*companyEmpWage.Day_hour;
+					companyEmpWage.Total_Month_Wage=companyEmpWage.Total_Month_Wage+companyEmpWage.Total_Wage;
+					companyEmpWage.Total_Woking_Days=companyEmpWage.Total_Woking_Days+1;
+				}
+			System.out.println("------------------------Total-------------------------");
+			System.out.println("Total Month Wage in "+ companyEmpWage.Company +" is : "+companyEmpWage.Total_Month_Wage);
+			System.out.println("Total Month Work Hours in "+ companyEmpWage.Company +" is : "+companyEmpWage.hours+" Out of "+companyEmpWage.Max_Hours_Per_Month);
+			System.out.println("Total Month Working Days in "+ companyEmpWage.Company +" is : "+(companyEmpWage.Total_Woking_Days-1)+" Out of "+companyEmpWage.Num_Of_Working_Days);
+			System.out.println("------------------------------------------------------");
+			return companyEmpWage.Total_Month_Wage;		
 		}
 		
 		
