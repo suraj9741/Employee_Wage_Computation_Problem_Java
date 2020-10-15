@@ -1,5 +1,7 @@
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 interface CalcEmpWage {
 	int computeEmpWage(EmpMethods companyEmpWage);
 }
@@ -28,7 +30,10 @@ class EmpMethods{
 	public void setTotalEmpWage(int TotalEmpWage){
 		this.TotalEmpWage=TotalEmpWage;
 	}
-	//public String toString(){	return 0 }
+	public String toString(){	
+		System.out.println("Total Month Wage in "+ Company +" is : "+TotalEmpWage);
+		return "------------------------------------------------------";
+	}
 	
 	
 	
@@ -39,21 +44,38 @@ public class EmpWage implements CalcEmpWage{
 	
 		Random rand = new Random();
 		private ArrayList<EmpMethods> CompanyEmpArray;
+		//Map<String, EmpMethods> DailyWageRecord;
+		Map<Integer,Integer> DailyWageRecord;
 		private int NumOfCompany=0;
+		int Total;
+		int Check;
 		
 		public EmpWage(){
 			CompanyEmpArray = new ArrayList<EmpMethods>();
+			DailyWageRecord = new HashMap<>();
 		}
 		
 		private void addCompnyEmpWage(String Company, int Emp_Rate_Per_Hour, int Num_Of_Working_Days, int Max_Hours_Per_Month){
-			CompanyEmpArray.add(new EmpMethods(Company,Emp_Rate_Per_Hour,Num_Of_Working_Days,Max_Hours_Per_Month));
+			EmpMethods EmpMethodsAdd = new EmpMethods(Company,Emp_Rate_Per_Hour,Num_Of_Working_Days,Max_Hours_Per_Month);
+			CompanyEmpArray.add(EmpMethodsAdd);
+			//DailyWageRecord.put(Company, EmpMethodsAdd);
 			NumOfCompany++;
 		}
 		
 		private void computeEmpWage(){
 			for (int i=0;i<NumOfCompany;i++){
 				CompanyEmpArray.get(i).setTotalEmpWage(this.computeEmpWage(CompanyEmpArray.get(i)));
-				//System.out.println(companyEmpArray[i]);
+				HashMapPrint();
+				System.out.println(CompanyEmpArray.get(i));
+			}
+		}
+		
+		void HashMapPrint(){
+			Total=1;
+			System.out.println("Days       Employee Wage");
+			for(Map.Entry m : DailyWageRecord.entrySet()){
+				System.out.println(m.getKey()+"          "+m.getValue());
+				Total++;
 			}
 		}
 		public int computeEmpWage(EmpMethods companyEmpWage){
@@ -77,12 +99,14 @@ public class EmpWage implements CalcEmpWage{
 					companyEmpWage.Total_Wage=companyEmpWage.Emp_Rate_Per_Hour*companyEmpWage.Day_hour;
 					companyEmpWage.Total_Month_Wage=companyEmpWage.Total_Month_Wage+companyEmpWage.Total_Wage;
 					companyEmpWage.Total_Woking_Days=companyEmpWage.Total_Woking_Days+1;
+					DailyWageRecord.put((companyEmpWage.Total_Woking_Days-1),companyEmpWage.Total_Wage);
 				}
 			System.out.println("------------------------Total-------------------------");
-			System.out.println("Total Month Wage in "+ companyEmpWage.Company +" is : "+companyEmpWage.Total_Month_Wage);
+			//System.out.println("Total Month Wage in "+ companyEmpWage.Company +" is : "+companyEmpWage.Total_Month_Wage);
 			System.out.println("Total Month Work Hours in "+ companyEmpWage.Company +" is : "+companyEmpWage.hours+" Out of "+companyEmpWage.Max_Hours_Per_Month);
 			System.out.println("Total Month Working Days in "+ companyEmpWage.Company +" is : "+(companyEmpWage.Total_Woking_Days-1)+" Out of "+companyEmpWage.Num_Of_Working_Days);
 			System.out.println("------------------------------------------------------");
+			System.out.println("                       "+ companyEmpWage.Company);
 			return companyEmpWage.Total_Month_Wage;		
 		}
 		
