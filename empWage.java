@@ -1,8 +1,8 @@
 import java.util.Random;
+import java.util.ArrayList;
 interface CalcEmpWage {
 	int computeEmpWage(EmpMethods companyEmpWage);
 }
-
 
 class EmpMethods{
 	int Day_hour=0;
@@ -38,23 +38,21 @@ class EmpMethods{
 public class EmpWage implements CalcEmpWage{
 	
 		Random rand = new Random();
-		
-		private EmpMethods[] companyEmpArray;
+		private ArrayList<EmpMethods> CompanyEmpArray;
 		private int NumOfCompany=0;
 		
-		
 		public EmpWage(){
-			companyEmpArray =new EmpMethods[5];
+			CompanyEmpArray = new ArrayList<EmpMethods>();
 		}
 		
 		private void addCompnyEmpWage(String Company, int Emp_Rate_Per_Hour, int Num_Of_Working_Days, int Max_Hours_Per_Month){
-			companyEmpArray[NumOfCompany]=new EmpMethods(Company,Emp_Rate_Per_Hour,Num_Of_Working_Days,Max_Hours_Per_Month);
+			CompanyEmpArray.add(new EmpMethods(Company,Emp_Rate_Per_Hour,Num_Of_Working_Days,Max_Hours_Per_Month));
 			NumOfCompany++;
 		}
 		
 		private void computeEmpWage(){
 			for (int i=0;i<NumOfCompany;i++){
-				companyEmpArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpArray[i]));
+				CompanyEmpArray.get(i).setTotalEmpWage(this.computeEmpWage(CompanyEmpArray.get(i)));
 				//System.out.println(companyEmpArray[i]);
 			}
 		}
