@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 interface CalcEmpWage {
 	int computeEmpWage(EmpMethods companyEmpWage);
 }
@@ -44,7 +45,7 @@ public class EmpWage implements CalcEmpWage{
 	
 		Random rand = new Random();
 		private ArrayList<EmpMethods> CompanyEmpArray;
-		//Map<String, EmpMethods> DailyWageRecord;
+		Map<String, EmpMethods> DailyWage;
 		Map<Integer,Integer> DailyWageRecord;
 		private int NumOfCompany=0;
 		int Total;
@@ -53,12 +54,13 @@ public class EmpWage implements CalcEmpWage{
 		public EmpWage(){
 			CompanyEmpArray = new ArrayList<EmpMethods>();
 			DailyWageRecord = new HashMap<>();
+			DailyWage = new HashMap<>();
 		}
 		
 		private void addCompnyEmpWage(String Company, int Emp_Rate_Per_Hour, int Num_Of_Working_Days, int Max_Hours_Per_Month){
 			EmpMethods EmpMethodsAdd = new EmpMethods(Company,Emp_Rate_Per_Hour,Num_Of_Working_Days,Max_Hours_Per_Month);
 			CompanyEmpArray.add(EmpMethodsAdd);
-			//DailyWageRecord.put(Company, EmpMethodsAdd);
+			DailyWage.put(Company, EmpMethodsAdd);
 			NumOfCompany++;
 		}
 		
@@ -68,6 +70,10 @@ public class EmpWage implements CalcEmpWage{
 				HashMapPrint();
 				System.out.println(CompanyEmpArray.get(i));
 			}
+		}
+		
+		public int getTotalWage(String company){
+			return DailyWage.get(company).TotalEmpWage;
 		}
 		
 		void HashMapPrint(){
@@ -116,5 +122,9 @@ public class EmpWage implements CalcEmpWage{
 		EmpWageBuilder.addCompnyEmpWage("Dmart", 20, 20, 100);
 		EmpWageBuilder.addCompnyEmpWage("Reliance", 10, 25, 120);
 		EmpWageBuilder.computeEmpWage();
+		Scanner GET=new Scanner(System.in);
+		System.out.println("Enter the company Name you want to print Wage :");
+		String UserName = GET.nextLine();
+		System.out.println("Total Month Working Days in Dmart is : "+EmpWageBuilder.getTotalWage(UserName));
 	}
 }
