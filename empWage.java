@@ -1,4 +1,9 @@
 import java.util.Random;
+interface CalcEmpWage {
+	int computeEmpWage(EmpMethods companyEmpWage);
+}
+
+
 class EmpMethods{
 	int Day_hour=0;
 	int Total_Wage=1;
@@ -30,7 +35,7 @@ class EmpMethods{
 	int Total_Month_Wage=0;
 	
 }
-public class EmpWage{
+public class EmpWage implements CalcEmpWage{
 	
 		Random rand = new Random();
 		
@@ -53,7 +58,7 @@ public class EmpWage{
 				//System.out.println(companyEmpArray[i]);
 			}
 		}
-		private int computeEmpWage(EmpMethods companyEmpWage){
+		public int computeEmpWage(EmpMethods companyEmpWage){
 			while(companyEmpWage.Total_Woking_Days<=companyEmpWage.Num_Of_Working_Days&&companyEmpWage.hours<companyEmpWage.Max_Hours_Per_Month){
 					int choice = rand.nextInt(10) % 3;
 					switch (choice){
